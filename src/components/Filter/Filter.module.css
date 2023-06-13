@@ -1,0 +1,13 @@
+.filtrTitle {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.filterInput {
+  display: block;
+  margin-top: 5px;
+  width: 200px;
+  height: 25px;
+  border-color: cadetblue;
+  border-radius: 5px;
+}
