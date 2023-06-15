@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 const ContactList = ({ getVisibleName, deleteContact }) => {
   const visibleName = getVisibleName();
@@ -23,7 +23,7 @@ const ContactList = ({ getVisibleName, deleteContact }) => {
 };
 export default ContactList;
 
-// ContactList.propTypes = {
-//   getVisibleName: PropTypes.func.isRequired,
-//   deleteContact: PropTypes.func.isRequired,
-// };
+ContactList.propTypes = {
+  getVisibleName: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};

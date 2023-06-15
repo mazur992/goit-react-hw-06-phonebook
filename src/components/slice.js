@@ -12,6 +12,7 @@ export const slice = createSlice({
         number: payload.numberData,
         id: nanoid(),
       });
+      localStorage.setItem('localContacts', JSON.stringify(state.contacts));
     },
     filterName: (state, { payload }) => {
       state.filter = payload.value;
@@ -20,6 +21,7 @@ export const slice = createSlice({
       state.contacts = state.contacts.filter(contact => {
         return contact.id !== payload.contactId;
       });
+      localStorage.setItem('localContacts', JSON.stringify(state.contacts));
     },
   },
 });

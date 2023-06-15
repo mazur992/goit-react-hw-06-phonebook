@@ -20,7 +20,6 @@ export function App() {
       Report.info(nameData + ' Is already in contacts!');
       return;
     }
-    console.log(createContact);
     dispatch(createContact({ nameData, numberData }));
   };
   const getVisibleName = () => {
