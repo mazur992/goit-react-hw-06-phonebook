@@ -8,8 +8,8 @@ export const slice = createSlice({
   reducers: {
     createContact: (state, { payload }) => {
       state.contacts.push({
-        name: payload.nameData,
-        number: payload.numberData,
+        name: payload.name,
+        number: payload.number,
         id: nanoid(),
       });
     },

@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { Report } from 'notiflix';
+import { contactSelector } from '../selectors';
+import { createContact } from '../slice';
 import css from './ContactForm.module.css';
 
-export default function ContactForm(props) {
+export default function ContactForm() {
+  const { contacts } = useSelector(contactSelector);
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const handleNameChange = event => {
@@ -21,7 +27,12 @@ export default function ContactForm(props) {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    props.handleBtnNameSubmit(name, number);
+    const isInclude = contacts.find(contact => contact.name === name);
+    if (isInclude) {
+      Report.info(name + ' Is already in contacts!');
+      return;
+    }
+    dispatch(createContact({ name, number }));
     setName('');
     setNumber('');
   };
@@ -64,4 +75,3 @@ export default function ContactForm(props) {
     </form>
   );
 }
-ContactForm.propTypes = { handleBtnNameSubmit: PropTypes.func.isRequired };
